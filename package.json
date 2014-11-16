@@ -1,0 +1,49 @@
+{
+  "name": "trayballoon",
+  "version": "0.0.0",
+  "description": "Create a trayballoon on Windows",
+  "license": "MIT",
+  "repository": "sindresorhus/trayballoon",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "bin": {
+    "trayballoon": "cli.js"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "files": [
+    "index.js",
+    "cli.js",
+    "vendor"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "bin",
+    "trayballoon",
+    "tray",
+    "balloon",
+    "tip",
+    "tooltip",
+    "popup",
+    "popover",
+    "windows",
+    "win",
+    "notification"
+  ],
+  "dependencies": {
+    "get-stdin": "^3.0.0",
+    "meow": "^2.0.0",
+    "onetime": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "0.0.4"
+  }
+}
