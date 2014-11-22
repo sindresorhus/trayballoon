@@ -16,6 +16,7 @@ module.exports = function (opts, cb) {
 
 	opts.icon = opts.icon || '';
 	opts.icon = reIsBinResource.test(opts.icon) ? opts.icon : path.resolve(opts.icon);
+	opts.timeout = typeof opts.timeout === 'number' ? opts.timeout : 5000;
 
 	cb = cb || function () {};
 	cb = onetime(cb);
@@ -33,7 +34,7 @@ module.exports = function (opts, cb) {
 		opts.title  || ' ',
 		opts.text,
 		opts.icon || ' ',
-		typeof opts.timeout === 'number' ? opts.timeout : '5000'
+		opts.timeout
 	];
 
 	var cpOpts = {
@@ -45,11 +46,7 @@ module.exports = function (opts, cb) {
 		cpOpts.stdio = ['ignore', 'ignore', process.stderr];
 	}
 
-	var cp = spawn('./nircmdc.exe', args, cpOpts);
-
-	if (!opts.wait) {
-		cp.unref();
-	}
+	var cp = spawn('./nircmdc.ex', args, cpOpts);
 
 	cp.once('error', cb);
 
@@ -60,5 +57,8 @@ module.exports = function (opts, cb) {
 
 	// make sure the callback is called, after a possible `exit` event,
 	// since unref()'ing the process makes it not call the `close` event
-	setImmediate(cb);
+	if (!opts.wait) {
+		cp.unref();
+		setImmediate(cb);
+	}
 };
