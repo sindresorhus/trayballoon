@@ -46,7 +46,7 @@ module.exports = function (opts, cb) {
 		cpOpts.stdio = ['ignore', 'ignore', process.stderr];
 	}
 
-	var cp = spawn('./nircmdc.ex', args, cpOpts);
+	var cp = spawn('./nircmdc.exe', args, cpOpts);
 
 	cp.once('error', cb);
 
