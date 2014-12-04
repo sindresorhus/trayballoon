@@ -18,7 +18,7 @@ $ npm install --save trayballoon
 var trayballoon = require('trayballoon');
 
 trayballoon({
-	text: 'Unicorns & rainbows'
+	text: 'Unicorns & rainbows',
 	icon: 'ponies.ico',
 	timeout: 20000
 }, function () {
