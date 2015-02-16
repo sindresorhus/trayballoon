@@ -39,8 +39,8 @@
     "notification"
   ],
   "dependencies": {
-    "get-stdin": "^3.0.0",
-    "meow": "^2.0.0",
+    "get-stdin": "^4.0.1",
+    "meow": "^3.0.0",
     "onetime": "^1.0.0"
   },
   "devDependencies": {
