@@ -2,12 +2,15 @@
 var path = require('path');
 var spawn = require('child_process').spawn;
 var onetime = require('onetime');
+var objectAssign = require('object-assign');
 
 module.exports = function (opts, cb) {
 	if (typeof opts !== 'object') {
 		cb = opts;
 		opts = {};
 	}
+
+	opts = objectAssign({}, opts);
 
 	var reIsBinResource = /^[^\.]+\.(?:exe|dll),-\d+$/;
 
