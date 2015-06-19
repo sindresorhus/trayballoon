@@ -18,7 +18,7 @@ var cli = meow({
 		'  --icon     Path to a .ico file or .exe/.dll file with icon resource index',
 		'  --timeout  Time to show the balloon in milliseconds',
 		'  --wait     Wait for the balloon to disappear'
-	].join('\n')
+	]
 });
 
 function init(data) {
