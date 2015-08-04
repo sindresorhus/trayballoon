@@ -1,6 +1,6 @@
 'use strict';
 var path = require('path');
-var spawn = require('child_process').spawn;
+var nircmd = require('nircmd');
 var onetime = require('onetime');
 var objectAssign = require('object-assign');
 
@@ -49,7 +49,7 @@ module.exports = function (opts, cb) {
 		cpOpts.stdio = ['ignore', 'ignore', process.stderr];
 	}
 
-	var cp = spawn('./nircmdc.exe', args, cpOpts);
+	var cp = nircmd.spawn(args, cpOpts);
 
 	cp.once('error', cb);
 
