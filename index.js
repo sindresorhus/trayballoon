@@ -11,11 +11,10 @@ module.exports = function (opts, cb) {
 	}
 
 	opts = objectAssign({}, opts);
-
 	var reIsBinResource = /^[^\.]+\.(?:exe|dll),-\d+$/;
 
 	// only wait when there's a callback
-	opts.wait = !!cb && opts.wait === true || false;
+	opts.wait = Boolean(cb) && opts.wait === true || false;
 
 	opts.icon = opts.icon || '';
 	opts.icon = reIsBinResource.test(opts.icon) ? opts.icon : path.resolve(opts.icon);
@@ -34,7 +33,7 @@ module.exports = function (opts, cb) {
 
 	var args = [
 		'trayballoon',
-		opts.title  || ' ',
+		opts.title || ' ',
 		opts.text,
 		opts.icon || ' ',
 		opts.timeout
@@ -52,7 +51,6 @@ module.exports = function (opts, cb) {
 	var cp = nircmd.spawn(args, cpOpts);
 
 	cp.once('error', cb);
-
 	cp.once('close', function (code) {
 		// NirCmd exits with this weird code even though it worked
 		cb(code === 4207175 ? 0 : code);
