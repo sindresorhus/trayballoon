@@ -1,14 +1,13 @@
-'use strict';
-var test = require('ava');
-var trayballoon = require('./');
+import test from 'ava';
+import fn from './';
 
-test(function (t) {
-	trayballoon({
+test.cb(t => {
+	fn({
 		text: 'text',
 		title: 'title',
 		icon: 'shell32.dll,-154'
-	}, function () {
-		t.assert(true);
+	}, () => {
+		t.pass();
 		t.end();
 	});
 });
