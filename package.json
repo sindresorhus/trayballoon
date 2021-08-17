@@ -1,6 +1,6 @@
 {
 	"name": "trayballoon",
-	"version": "1.0.4",
+	"version": "2.0.0",
 	"description": "Create a trayballoon on Windows",
 	"license": "MIT",
 	"repository": "sindresorhus/trayballoon",
