@@ -5,22 +5,15 @@ on:
 jobs:
   test:
     name: Node.js ${{ matrix.node-version }}
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       fail-fast: false
       matrix:
         node-version:
-          - 14
-          - 12
-          - 10
-          - 8
-          - 6
-          - 4
-          - 0.12
-          - 0.1
+          - 16
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install

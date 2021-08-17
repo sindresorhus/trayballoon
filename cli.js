@@ -1,27 +1,25 @@
 #!/usr/bin/env node
-'use strict';
-var meow = require('meow');
-var stdin = require('get-stdin');
-var trayballoon = require('./');
+import process from 'node:process';
+import meow from 'meow';
+import getStdin from 'get-stdin';
+import trayballoon from './index.js';
 
-var cli = meow({
-	help: [
-		'Usage',
-		'  trayballoon <text>',
-		'  echo <text> | trayballoon',
-		'',
-		'Example',
-		'  trayballoon unicorns --title rainbows --icon ponies.ico',
-		'',
-		'Options',
-		'  --title    Title of the balloon',
-		'  --icon     Path to a .ico file or .exe/.dll file with icon resource index',
-		'  --timeout  Time to show the balloon in milliseconds',
-		'  --wait     Wait for the balloon to disappear'
-	]
-});
+const cli = meow(`
+	Usage
+	  trayballoon <text>
+	  echo <text> | trayballoon
 
-function init(data) {
+	Example
+	  trayballoon unicorns --title rainbows --icon ponies.ico
+
+	Options
+	  --title    Title of the balloon
+	  --icon     Path to a .ico file or .exe/.dll file with icon resource index
+	  --timeout  Time to show the balloon in milliseconds
+	  --wait     Wait for the balloon to disappear
+`);
+
+async function init(data) {
 	if (!data) {
 		console.error('Input required');
 		process.exit(1);
@@ -29,16 +27,18 @@ function init(data) {
 
 	cli.flags.text = data;
 
-	trayballoon(cli.flags, function (err) {
-		if (err) {
-			console.error(err);
-			process.exit(1);
-		}
-	});
+	if (cli.flags.wait) {
+		await trayballoon(cli.flags);
+	} else {
+		trayballoon(cli.flags);
+	}
 }
 
-if (process.stdin.isTTY) {
-	init(cli.input[0]);
-} else {
-	stdin(init);
-}
+(async () => {
+	if (process.stdin.isTTY) {
+		await init(cli.input[0]);
+	} else {
+		const stdin = await getStdin();
+		await init(stdin);
+	}
+})();

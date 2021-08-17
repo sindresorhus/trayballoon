@@ -1,13 +1,18 @@
+import process from 'node:process';
 import test from 'ava';
-import fn from './';
+import trayballoon from './index.js';
 
-test.cb(t => {
-	fn({
-		text: 'text',
-		title: 'title',
-		icon: 'shell32.dll,-154'
-	}, () => {
+test('main', async t => {
+	if (process.env.CI) {
 		t.pass();
-		t.end();
-	});
+		return;
+	}
+
+	await t.notThrowsAsync(
+		trayballoon({
+			text: 'text',
+			title: 'title',
+			icon: 'shell32.dll,-154',
+		}),
+	);
 });

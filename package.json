@@ -1,48 +1,48 @@
 {
-  "name": "trayballoon",
-  "version": "1.0.4",
-  "description": "Create a trayballoon on Windows",
-  "license": "MIT",
-  "repository": "sindresorhus/trayballoon",
-  "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
-  },
-  "bin": "cli.js",
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "ava"
-  },
-  "files": [
-    "index.js",
-    "cli.js"
-  ],
-  "keywords": [
-    "cli-app",
-    "cli",
-    "bin",
-    "trayballoon",
-    "tray",
-    "balloon",
-    "tip",
-    "tooltip",
-    "popup",
-    "popover",
-    "windows",
-    "win",
-    "notification"
-  ],
-  "dependencies": {
-    "get-stdin": "^4.0.1",
-    "meow": "^3.3.0",
-    "nircmd": "^1.2.1",
-    "object-assign": "^2.0.0",
-    "onetime": "^1.0.0"
-  },
-  "devDependencies": {
-    "ava": "*"
-  }
+	"name": "trayballoon",
+	"version": "1.0.4",
+	"description": "Create a trayballoon on Windows",
+	"license": "MIT",
+	"repository": "sindresorhus/trayballoon",
+	"funding": "https://github.com/sponsors/sindresorhus",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "https://sindresorhus.com"
+	},
+	"type": "module",
+	"exports": "./index.js",
+	"bin": "./cli.js",
+	"engines": {
+		"node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+	},
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"files": [
+		"index.js",
+		"cli.js"
+	],
+	"keywords": [
+		"cli-app",
+		"cli",
+		"trayballoon",
+		"tray",
+		"balloon",
+		"tip",
+		"tooltip",
+		"popup",
+		"popover",
+		"windows",
+		"notification"
+	],
+	"dependencies": {
+		"get-stdin": "^9.0.0",
+		"meow": "^10.1.1",
+		"nircmd": "^2.0.0"
+	},
+	"devDependencies": {
+		"ava": "^3.15.0",
+		"xo": "^0.44.0"
+	}
 }

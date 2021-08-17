@@ -4,38 +4,39 @@
 
 ![](screenshot.gif)
 
-
 ## Install
 
-```sh
-$ npm install --save trayballoon
 ```
-
+$ npm install trayballoon
+```
 
 ## Usage
 
 ```js
-var trayballoon = require('trayballoon');
+import trayballoon from 'trayballoon';
 
-trayballoon({
+await trayballoon({
 	text: 'Unicorns & rainbows',
 	icon: 'ponies.ico',
 	timeout: 20000
-}, function () {
-	console.log('Trayballoon disappeared');
 });
-```
 
+console.log('Trayballoon disappeared');
+```
 
 ## API
 
-### trayballoon(options, [callback])
+### trayballoon(options)
+
+Return a promise that resolves when the trayballon disappears.
 
 #### options
 
+Type: `object`
+
 ##### text
 
-*Required*  
+*Required*\
 Type: `string`
 
 The body text.
@@ -50,24 +51,14 @@ The title text.
 
 Type: `string`
 
-Path to a `.ico` file or a `.exe`/`.dll` file with icon resource index *(eg: shell32.dll,-154)*.
+The path to a `.ico` file or a `.exe`/`.dll` file with icon resource index *(eg: shell32.dll,-154)*.
 
 ##### timeout
 
-Type: `number`  
+Type: `number`\
 Default: `5000`
 
-Time to show the balloon in milliseconds.
-
-##### wait
-
-Type: `boolean`  
-Default: `false`
-
-Wait until the balloon disappear for the callback to be called.
-
-Only has an effect if you supply a callback.
-
+The duration to show the balloon in milliseconds.
 
 ## CLI
 
@@ -91,8 +82,3 @@ $ trayballoon --help
     --timeout  Time to show the balloon in milliseconds
     --wait     Wait for the balloon to disappear
 ```
-
-
-## License
-
-MIT © [Sindre Sorhus](http://sindresorhus.com)
